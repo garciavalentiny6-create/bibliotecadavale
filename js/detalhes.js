@@ -39,9 +39,13 @@ if (!livro) {
                 <hr>
 
                 <h3>Sinopse</h3>
+
                 <p>${livro.sinopse}</p>
 
-                <button onclick="adicionarLivro()" class="btn btn-primary">
+                <button
+                    onclick="adicionarLivro()"
+                    class="btn btn-primary"
+                >
                     Adicionar à minha lista
                 </button>
             </article>
@@ -55,9 +59,11 @@ function adicionarLivro() {
         return;
     }
 
-    let lista = JSON.parse(localStorage.getItem("listaLivros")) || [];
+    let lista =
+        JSON.parse(localStorage.getItem("listaLivros")) || [];
 
-    const existente = lista.find(item => item.id === livro.id);
+    const existente =
+        lista.find(item => item.id === livro.id);
 
     if (existente) {
         existente.quantidade++;
@@ -68,7 +74,10 @@ function adicionarLivro() {
         });
     }
 
-    localStorage.setItem("listaLivros", JSON.stringify(lista));
+    localStorage.setItem(
+        "listaLivros",
+        JSON.stringify(lista)
+    );
 
     alert("Livro adicionado à sua lista!");
 }
