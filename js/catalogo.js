@@ -34,15 +34,25 @@ function mostrarLivros(lista) {
         listaLivros.innerHTML += `
             <article class="col-md-6 col-lg-3">
                 <div class="card h-100">
-                    <img src="${livro.capa}" class="card-img-top" alt="Capa de ${livro.titulo}">
+                    <img
+                        src="${livro.capa}"
+                        class="card-img-top"
+                        alt="Capa de ${livro.titulo}"
+                    >
 
                     <div class="card-body">
                         <h2 class="h5">${livro.titulo}</h2>
+
                         <p class="mb-1">${livro.autor}</p>
                         <p class="mb-1">${livro.genero}</p>
-                        <p class="mb-3">${livro.avaliacao.toFixed(1)} / 5</p>
+                        <p class="mb-3">
+                            ${livro.avaliacao.toFixed(1)} / 5
+                        </p>
 
-                        <a href="detalhes.html?id=${livro.id}" class="btn btn-primary">
+                        <a
+                            href="detalhes.html?id=${livro.id}"
+                            class="btn btn-primary"
+                        >
                             Ver detalhes
                         </a>
                     </div>
