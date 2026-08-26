@@ -1,8 +1,13 @@
 const lista = document.getElementById("lista");
-let livrosSelecionados = JSON.parse(localStorage.getItem("listaLivros")) || [];
+
+let livrosSelecionados =
+    JSON.parse(localStorage.getItem("listaLivros")) || [];
 
 function salvarLista() {
-    localStorage.setItem("listaLivros", JSON.stringify(livrosSelecionados));
+    localStorage.setItem(
+        "listaLivros",
+        JSON.stringify(livrosSelecionados)
+    );
 }
 
 function mostrarLista() {
@@ -14,7 +19,8 @@ function mostrarLista() {
     }
 
     livrosSelecionados.forEach(item => {
-        const livro = livros.find(livro => livro.id === item.id);
+        const livro =
+            livros.find(livro => livro.id === item.id);
 
         if (!livro) {
             return;
@@ -39,17 +45,28 @@ function mostrarLista() {
                     </div>
 
                     <div class="col-md-4 text-md-end">
-                        <button onclick="diminuir(${livro.id})" class="btn btn-outline-secondary">
+
+                        <button
+                            onclick="diminuir(${livro.id})"
+                            class="btn btn-outline-secondary"
+                        >
                             -
                         </button>
 
-                        <button onclick="aumentar(${livro.id})" class="btn btn-outline-secondary">
+                        <button
+                            onclick="aumentar(${livro.id})"
+                            class="btn btn-outline-secondary"
+                        >
                             +
                         </button>
 
-                        <button onclick="remover(${livro.id})" class="btn btn-danger">
+                        <button
+                            onclick="remover(${livro.id})"
+                            class="btn btn-danger"
+                        >
                             Remover
                         </button>
+
                     </div>
 
                 </section>
@@ -59,19 +76,22 @@ function mostrarLista() {
 }
 
 function aumentar(id) {
-    const item = livrosSelecionados.find(livro => livro.id === id);
+    const item =
+        livrosSelecionados.find(livro => livro.id === id);
 
     if (!item) {
         return;
     }
 
     item.quantidade++;
+
     salvarLista();
     mostrarLista();
 }
 
 function diminuir(id) {
-    const item = livrosSelecionados.find(livro => livro.id === id);
+    const item =
+        livrosSelecionados.find(livro => livro.id === id);
 
     if (!item) {
         return;
@@ -80,7 +100,10 @@ function diminuir(id) {
     if (item.quantidade > 1) {
         item.quantidade--;
     } else {
-        livrosSelecionados = livrosSelecionados.filter(livro => livro.id !== id);
+        livrosSelecionados =
+            livrosSelecionados.filter(
+                livro => livro.id !== id
+            );
     }
 
     salvarLista();
@@ -88,16 +111,24 @@ function diminuir(id) {
 }
 
 function remover(id) {
-    livrosSelecionados = livrosSelecionados.filter(livro => livro.id !== id);
+    livrosSelecionados =
+        livrosSelecionados.filter(
+            livro => livro.id !== id
+        );
 
     salvarLista();
     mostrarLista();
 }
 
 function verificarCodigo() {
-    const campoCodigo = document.getElementById("codigo");
-    const mensagem = document.getElementById("mensagem");
-    const codigo = campoCodigo.value.trim().toUpperCase();
+    const campoCodigo =
+        document.getElementById("codigo");
+
+    const mensagem =
+        document.getElementById("mensagem");
+
+    const codigo =
+        campoCodigo.value.trim().toUpperCase();
 
     if (codigo === "") {
         mensagem.textContent = "Digite um código.";
@@ -105,7 +136,9 @@ function verificarCodigo() {
     }
 
     if (codigo === "LEITOR10") {
-        mensagem.textContent = "Código válido! Você recebeu prioridade na fila de espera.";
+        mensagem.textContent =
+            "Código válido! Você recebeu prioridade na fila de espera.";
+
         campoCodigo.value = "";
         return;
     }
